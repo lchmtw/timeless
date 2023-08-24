@@ -1,0 +1,114 @@
+.clock {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 25px;
+    background: rgb(221, 221, 221);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    box-shadow: 30px 30px 30px -10px rgba(0, 0, 0, 0.098),
+        inset 15px 15px 10px rgba(255, 255, 255, 0.743),
+        -15px -15px 35px rgba(255, 255, 255, 0.55),
+        inset -1px -1px 10px rgba(0, 0, 0, 0.204);
+}
+
+.clock .clock-face {
+    position: absolute;
+    inset: 35px;
+    background: rgb(0, 92, 158);
+    border-radius: 50%;
+    box-shadow:
+        5px 5px 15px rgba(0, 58, 100, 0.83), inset 5px 5px 5px rgba(255, 255, 255, 0.55), -6px -6px 10px rgba(255, 255, 255, 1);
+}
+
+.clock .clock-face .number {
+    position: absolute;
+    inset: 5px;
+    color: #fff;
+    text-align: center;
+    transform: rotate(calc(90deg * var(--i)));
+    pointer-events: none;
+}
+
+.clock .clock-face .number span {
+    all: revert;
+    font-size: 1.5em;
+    font-weight: 300;
+    display: inline-block;
+    transform: rotate(calc(-90deg * var(--i)));
+}
+
+.clock .clock-face::before {
+    content: '';
+    position: absolute;
+    inset: 33px;
+    background: linear-gradient(rgb(255, 187, 187), rgb(207, 168, 255));
+    border-radius: 50%;
+    animation: animate 2s linear infinite;
+    z-index: 0; 
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.clock .clock-face::after {
+    content: '';
+    position: absolute;
+    inset: 37px;
+    background: rgb(0, 92, 158);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.clock .clock-face .center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.clock .clock-face .center span {
+    position: absolute;
+    bottom: 50%;
+    background: white;
+}
+
+.clock .clock-face .center span {
+    position: absolute;
+    width: 3px;
+    height: 50%;
+    background: white;
+    transform-origin: bottom;
+}
+
+.clock .clock-face .center#hr span {
+    width: 5px;
+    height: 30px;
+    border-radius: 2.5px;
+}
+
+.clock .clock-face .center#mn span {
+    width: 3px;
+    height: 60px;
+    background: white;
+    border-radius: 1.5px;
+}
+
+.clock .clock-face .center#sc span {
+    width: 1px;
+    height: 70px;
+    background: #ff0000;
+    box-shadow: 0px 20px red;
+    transform-origin: center 70px;
+}
